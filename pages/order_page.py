@@ -42,6 +42,9 @@ class OrderPage:
     def click_next(self):
         self.driver.find_element(*Opl.button_next).click()
 
+    def check_button_next(self):
+        WebDriverWait(self.driver, 5).until(expected_conditions.element_to_be_clickable(Opl.button_next))
+
     def click_date(self):
         self.driver.find_element(*Opl.date).click()
 
@@ -65,6 +68,9 @@ class OrderPage:
     def click_black_color(self):
         self.driver.find_element(*Opl.black_color).click()
 
+    def check_button_order(self):
+        WebDriverWait(self.driver, 5).until(expected_conditions.element_to_be_clickable(Opl.button_order))
+
     def click_button_order(self):
         self.driver.find_element(*Opl.button_order).click()
 
@@ -82,3 +88,7 @@ class OrderPage:
 
     def check_button_cancel(self):
         WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(Opl.button_cancel))
+
+    def text_in_button_order(self):
+        return self.driver.find_element(*Opl.button_order).text
+

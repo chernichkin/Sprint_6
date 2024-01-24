@@ -10,7 +10,7 @@ class MainPage:
     def __init__(self, driver):
         self.driver = driver
 
-    def click_logo(self):
+    def click_button_order_center(self):
         self.driver.find_element(*MainPageLocators.button_order_center).click()
 
     def check_button_order_center_is_enabled(self):

@@ -13,5 +13,8 @@ class BasePage:
     def click_logo(self):
         self.driver.find_element(*BasePageLocators.logo).click()
 
+    def check_button_order_header_is_clickable(self):
+        WebDriverWait(self.driver, 5).until(expected_conditions.element_to_be_clickable(BasePageLocators.button_order_header))
+
     def click_button_order_header(self):
         self.driver.find_element(*BasePageLocators.button_order_header).click()
