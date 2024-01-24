@@ -89,6 +89,6 @@ class OrderPage:
     def check_button_cancel(self):
         WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(Opl.button_cancel))
 
-    def text_in_button_order(self):
-        return self.driver.find_element(*Opl.button_order).text
+    def text_in_button_status(self):
+        return self.driver.find_element(*Opl.button_status).text
 

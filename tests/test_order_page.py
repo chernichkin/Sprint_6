@@ -40,7 +40,7 @@ class TestOrder:
 
         order_page.check_button_yes_is_clickable()
         order_page.click_button_yes()
-        text_in_button = order_page.text_in_button_order()
+        text_in_button = order_page.text_in_button_status()
 
         assert text_in_button == 'Посмотреть статус'
 
