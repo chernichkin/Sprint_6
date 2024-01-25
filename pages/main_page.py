@@ -27,3 +27,10 @@ class MainPage:
     @allure.step('Скроллим вниз страницы')
     def scroll_to_down_main_page(self):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    def click_to_list_target(self, param):
+        self.driver.find_element(By.ID, param).click()
+
+    @allure.step('Получаем текст открывшегося списка')
+    def text_in_list_target(self, param):
+        return self.driver.find_element(By.ID, param).text
