@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from pages.order_page import OrderPage
 from pages.base_page import BasePage
+from data import Data
 from pages.main_page import MainPageLocators
 
 class TestOrder:
@@ -19,7 +20,8 @@ class TestOrder:
 
     @allure.title('Проверка закакза при переходе с хэдера')
     @allure.description('Проверяем что при успешном заказе появляется всплывающее окно с кнопкой "Проверить статус"')
-    def test_order_true(self):
+    @pytest.mark.parametrize('name,surname,address,phone', [*Data.order_data])
+    def test_order_true(self, name, surname, address, phone):
 
         self.driver.get('https://qa-scooter.praktikum-services.ru/')
 
@@ -28,11 +30,11 @@ class TestOrder:
         base_page.click_button_order_header()
         order_page = OrderPage(self.driver)
         order_page.check_button_next()
-        order_page.set_name('Вася')
-        order_page.set_surname('Васин')
-        order_page.set_address('аааааааааа')
+        order_page.set_name(name)
+        order_page.set_surname(surname)
+        order_page.set_address(address)
         order_page.set_metro_lubjanka_station()
-        order_page.set_phone('89996662233')
+        order_page.set_phone(phone)
         order_page.click_next()
         order_page.check_button_order()
         order_page.set_date()
