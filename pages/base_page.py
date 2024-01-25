@@ -36,6 +36,7 @@ class BasePage:
     def click_button_order_header(self):
         self.driver.find_element(*BasePageLocators.button_order_header).click()
 
+    @allure.step('Смена страниц')
     def switch_pages(self):
         WebDriverWait(self.driver, 10).until(expected_conditions.number_of_windows_to_be(2))
         self.driver.switch_to.window(self.driver.window_handles[1])

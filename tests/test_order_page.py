@@ -82,7 +82,7 @@ class TestOrder:
 
     @allure.title('Проверка возврата на главную страницу при тапе на лого самоката')
     @pytest.mark.parametrize('name,surname,address,phone', [*Data.order_data])
-    def test_order_true(self, name, surname, address, phone):
+    def test_back_to_main_page(self, name, surname, address, phone):
 
         self.driver.get('https://qa-scooter.praktikum-services.ru/')
 
