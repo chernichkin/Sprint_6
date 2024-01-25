@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from locators.order_page_locators import OrderPageLocators as Opl
 
+
 class OrderPage:
 
     def __init__(self, driver):
@@ -83,6 +84,7 @@ class OrderPage:
     def check_button_order(self):
         WebDriverWait(self.driver, 5).until(expected_conditions.element_to_be_clickable(Opl.button_order))
 
+
     @allure.step('Кликаем на кнопку "Заказать"')
     def click_button_order(self):
         self.driver.find_element(*Opl.button_order).click()
@@ -97,6 +99,7 @@ class OrderPage:
     def check_visibility_of_button_status(self):
         WebDriverWait(self.driver, 5).until(expected_conditions.visibility_of_element_located(Opl.button_status))
 
+    @allure.step('Кликаем по кнопке "проверить статус"')
     def click_button_status(self):
         self.driver.find_element(*Opl.button_status).click()
 

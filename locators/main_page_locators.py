@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
 
+
 class MainPageLocators:
-    button_order_center = [By.XPATH, '//div[@class="Home_FinishButton__1_cWm"]/button]']
+    button_order_center_div = [By.CLASS_NAME, "Home_FinishButton__1_cWm"]
+    button_order_center = [By.CLASS_NAME, "Home_FinishButton__1_cWm"]
