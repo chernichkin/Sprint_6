@@ -80,6 +80,41 @@ class TestOrder:
         text_in_button = order_page.text_in_button_status()
         assert text_in_button == 'Посмотреть статус'
 
+    @allure.title('Проверка возврата на главную страницу при тапе на лого самоката')
+    @pytest.mark.parametrize('name,surname,address,phone', [*Data.order_data])
+    def test_order_true(self, name, surname, address, phone):
+
+        self.driver.get('https://qa-scooter.praktikum-services.ru/')
+
+        base_page = BasePage(self.driver)
+        base_page.check_button_order_header_is_clickable()
+        base_page.click_button_order_header()
+        order_page = OrderPage(self.driver)
+        order_page.check_button_next()
+        order_page.set_name(name)
+        order_page.set_surname(surname)
+        order_page.set_address(address)
+        order_page.set_metro_lubjanka_station()
+        order_page.set_phone(phone)
+        order_page.click_next()
+        order_page.check_button_order()
+        order_page.set_date()
+        order_page.set_rental_period()
+        order_page.click_black_color()
+        order_page.click_button_order()
+        order_page.check_button_yes_is_clickable()
+        order_page.click_button_yes()
+        order_page.click_button_status()
+        base_page.check_logo_is_clickable()
+        base_page.click_logo()
+        main_page = MainPage(self.driver)
+        main_page.check_main_title_is_visible()
+        text_in_title = main_page.text_in_main_title()
+
+        assert 'Самокат' in text_in_title
+
+
+
     @classmethod
     def teardown_class(cls):
         cls.driver.quit()

@@ -34,3 +34,9 @@ class MainPage:
     @allure.step('Получаем текст открывшегося списка')
     def text_in_list_target(self, param):
         return self.driver.find_element(By.ID, param).text
+
+    def check_main_title_is_visible(self):
+        WebDriverWait(self.driver, 5).until(expected_conditions.visibility_of_element_located(MainPageLocators.main_title))
+
+    def text_in_main_title(self):
+        return self.driver.find_element(*MainPageLocators.main_title).text

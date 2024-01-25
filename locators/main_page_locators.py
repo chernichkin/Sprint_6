@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 class MainPageLocators:
     button_order_center_div = [By.CLASS_NAME, "Home_FinishButton__1_cWm"]
     button_order_center = [By.CLASS_NAME, "Home_FinishButton__1_cWm"]
+    main_title = [By.CLASS_NAME, 'Home_Header__iJKdX']
     list_0 = [By.CLASS_NAME, 'accordion__heading-0']
     list_1 = [By.CLASS_NAME, 'accordion__heading-1']
     list_2 = [By.CLASS_NAME, 'accordion__heading-2']
