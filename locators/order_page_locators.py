@@ -21,9 +21,7 @@ class OrderPageLocators:
 
     #Окно отметы заказа
     button_cancel = [By.XPATH, './/button[text()= "Отменить заказ"]']
-    #button_look = [By.XPATH, './/button[text()= "Посмотреть"]']
 
     #Прочее
-    #title_completed = [By.CLASS_NAME, 'Order_ModalHeader__3FDaJ'] #Заголовок "Заказ успешно оформлен"
     metro_zorge_st = (By.XPATH, f'//div[text()= "Зорге"]') #Станция метро "Черкизовская"
     metro_lubjanka_st = (By.XPATH, '//div[text()="Лубянка"]') #Станция метро "Курская"

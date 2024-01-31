@@ -10,23 +10,15 @@ from pages.base_page import BasePage
 from data import Data
 from pages.main_page import MainPage
 
+
 class TestTextDropDownList:
-
-    driver = None
-
-    @classmethod
-    def setup_class(cls):
-        cls.driver = webdriver.Firefox()
-        cls.driver.maximize_window()
-
 
     @allure.title('Проверка отображения верного текста в списке в конце страницы')
     @pytest.mark.parametrize('locator,text', [*Data.locator_text])
-    def test_text_from_drop_down_list_true(self, locator, text):
+    def test_text_from_drop_down_list_true(self, driver, locator, text):
 
-        self.driver.get('https://qa-scooter.praktikum-services.ru/')
-        main_page = MainPage(self.driver)
-        base_page = BasePage(self.driver)
+        main_page = MainPage(driver)
+        base_page = BasePage(driver)
 
         base_page.check_button_order_header_is_clickable()
         main_page.scroll_to_down_main_page()
@@ -34,8 +26,3 @@ class TestTextDropDownList:
         target_list_text = main_page.text_in_list_target(locator)
 
         assert target_list_text == text
-
-
-    @classmethod
-    def teardown_class(cls):
-        cls.driver.quit()

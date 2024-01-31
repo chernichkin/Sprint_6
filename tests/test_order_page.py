@@ -12,24 +12,16 @@ from pages.main_page import MainPage
 
 class TestOrder:
 
-    driver = None
-
-    @classmethod
-    def setup_class(cls):
-        cls.driver = webdriver.Firefox()
-        cls.driver.maximize_window()
 
     @allure.title('Проверка закакза при переходе с хэдера')
     @allure.description('Проверяем что при успешном заказе появляется всплывающее окно с кнопкой "Проверить статус"')
     @pytest.mark.parametrize('name,surname,address,phone', [*Data.order_data])
-    def test_order_true(self, name, surname, address, phone):
+    def test_order_true(self, driver, name, surname, address, phone):
 
-        self.driver.get('https://qa-scooter.praktikum-services.ru/')
-
-        base_page = BasePage(self.driver)
+        base_page = BasePage(driver)
         base_page.check_button_order_header_is_clickable()
         base_page.click_button_order_header()
-        order_page = OrderPage(self.driver)
+        order_page = OrderPage(driver)
         order_page.check_button_next()
         order_page.set_name(name)
         order_page.set_surname(surname)
@@ -51,13 +43,11 @@ class TestOrder:
     @allure.title('Проверка закакза при переходе с центральной конпки')
     @allure.description('Проверяем что при успешном заказе появляется всплывающее окно с кнопкой "Проверить статус"')
     @pytest.mark.parametrize('name,surname,address,phone', [*Data.order_data])
-    def test_order_from_central_button_true(self, name, surname, address, phone):
+    def test_order_from_central_button_true(self, driver, name, surname, address, phone):
 
-        self.driver.get('https://qa-scooter.praktikum-services.ru/')
-
-        main_page = MainPage(self.driver)
-        order_page = OrderPage(self.driver)
-        base_page = BasePage(self.driver)
+        main_page = MainPage(driver)
+        order_page = OrderPage(driver)
+        base_page = BasePage(driver)
 
         base_page.check_button_order_header_is_clickable()
         main_page.scroll_to_button_order_center()
@@ -82,14 +72,14 @@ class TestOrder:
 
     @allure.title('Проверка возврата на главную страницу при тапе на лого самоката')
     @pytest.mark.parametrize('name,surname,address,phone', [*Data.order_data])
-    def test_back_to_main_page(self, name, surname, address, phone):
+    def test_back_to_main_page(self, driver, name, surname, address, phone):
 
-        self.driver.get('https://qa-scooter.praktikum-services.ru/')
+        driver.get('https://qa-scooter.praktikum-services.ru/')
 
-        base_page = BasePage(self.driver)
+        base_page = BasePage(driver)
         base_page.check_button_order_header_is_clickable()
         base_page.click_button_order_header()
-        order_page = OrderPage(self.driver)
+        order_page = OrderPage(driver)
         order_page.check_button_next()
         order_page.set_name(name)
         order_page.set_surname(surname)
@@ -107,14 +97,8 @@ class TestOrder:
         order_page.click_button_status()
         base_page.check_logo_is_clickable()
         base_page.click_logo()
-        main_page = MainPage(self.driver)
+        main_page = MainPage(driver)
         main_page.check_main_title_is_visible()
         text_in_title = main_page.text_in_main_title()
 
         assert 'Самокат' in text_in_title
-
-
-
-    @classmethod
-    def teardown_class(cls):
-        cls.driver.quit()
