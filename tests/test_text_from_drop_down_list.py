@@ -18,11 +18,10 @@ class TestTextDropDownList:
     def test_text_from_drop_down_list_true(self, driver, locator, text):
 
         main_page = MainPage(driver)
-        base_page = BasePage(driver)
 
-        base_page.check_button_order_header_is_clickable()
-        main_page.scroll_to_down_main_page()
-        main_page.click_to_list_target(locator)
-        target_list_text = main_page.text_in_list_target(locator)
+        main_page.check_button_order_in_header_is_clickable()
+        main_page.scroll_to_down_page()
+        main_page.click_to_target_in_list(locator)
+        text_in_list_target = main_page.get_text_in_opened_list(locator)
 
-        assert target_list_text == text
+        assert text_in_list_target == text
