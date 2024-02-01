@@ -22,12 +22,15 @@ class OrderPage(BasePage):
     def set_address(self, address):
         self.set_field_by_locator(Opl.address, address)
 
+    @allure.step('Кликаем по полю "метро"')
     def click_metro_station(self):
         self.click_on_element(Opl.metro_station)
 
+    @allure.step('Кликаем по станции "Зорге"')
     def click_metro_zorge_st(self):
         self.click_on_element(Opl.metro_zorge_st)
 
+    @allure.step('Кликаем по станции "Лубянка"')
     def click_metro_lubjanka_st(self):
         self.click_on_element(Opl.metro_lubjanka_st)
 
@@ -49,12 +52,15 @@ class OrderPage(BasePage):
     def click_next(self):
         self.click_on_element(Opl.button_next)
 
+    @allure.step('Проверяем кликабельность кнопки "далее"')
     def check_button_next(self):
         self.check_element_is_clickable(Opl.button_next)
 
+    @allure.step('Кликаем по полю с датой')
     def click_date(self):
         self.click_on_element(Opl.date)
 
+    @allure.step('Кликаем по сегодняшней дате')
     def click_today(self):
         self.click_on_element(Opl.today)
 
@@ -63,9 +69,11 @@ class OrderPage(BasePage):
         self.click_date()
         self.click_today()
 
+    @allure.step('Кликаем по полю периода')
     def click_rental_period(self):
         self.click_on_element(Opl.rental_period)
 
+    @allure.step('Кликаем по датам выбора аренды')
     def click_rental_period_choose(self):
         self.click_on_element(Opl.rental_period_choose)
 
@@ -78,6 +86,7 @@ class OrderPage(BasePage):
     def click_black_color(self):
         self.click_on_element(Opl.black_color)
 
+    @allure.step('Проверяем кликабельность кнопки заказа')
     def check_button_order(self):
         self.check_element_is_clickable(Opl.button_order)
 
@@ -85,6 +94,7 @@ class OrderPage(BasePage):
     def click_button_order(self):
         self.click_on_element(Opl.button_order)
 
+    @allure.step('Проверяем кликабельность кнопки "Да"')
     def check_button_yes_is_clickable(self):
         self.check_element_is_clickable(Opl.button_yes)
 
@@ -92,6 +102,7 @@ class OrderPage(BasePage):
     def click_button_yes(self):
         self.click_on_element(Opl.button_yes)
 
+    @allure.step('Проверяем видимость кнопки проверки статуса')
     def check_visibility_of_button_status(self):
         self.check_element_is_visable(Opl.button_status)
 
@@ -99,6 +110,7 @@ class OrderPage(BasePage):
     def click_button_status(self):
         self.click_on_element(Opl.button_status)
 
+    @allure.step('Проверяем кликабельность кнопки отмены')
     def check_button_cancel(self):
         self.check_element_is_clickable(Opl.button_cancel)
 

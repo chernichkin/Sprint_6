@@ -15,6 +15,7 @@ class MainPage(BasePage):
     def click_on_button_order_center(self):
         self.click_on_element(MainPageLocators.button_order_center)
 
+    @allure.step('Проверяем что кнопка покупки доступна для клика')
     def check_button_order_center_is_clickable(self):
         self.check_element_is_clickable(MainPageLocators.button_order_center)
 
@@ -22,12 +23,15 @@ class MainPage(BasePage):
     def scroll_to_button_order_center(self):
         return self.scroll_to_element(MainPageLocators.button_order_center_div)
 
+    @allure.step('Проверяем видимость заголовка страницы')
     def check_main_title_is_visible(self):
         self.check_element_is_visable(MainPageLocators.main_title)
 
+    @allure.step('Получаем текст заголовка страницы')
     def get_text_in_main_title(self):
         return self.get_text_element(MainPageLocators.main_title)
 
+    @allure.step('Проверяем кликабельность кнопки заказа из хэдера')
     def check_button_order_in_header_is_clickable(self):
         self.check_element_is_clickable(BasePageLocators.button_order_header)
 
@@ -35,6 +39,7 @@ class MainPage(BasePage):
     def click_logo(self):
         self.click_on_element(BasePageLocators.logo)
 
+    @allure.step('Проверяем кликабельность логотипа скутера')
     def check_logo_is_clickable(self):
         self.check_element_is_clickable(BasePageLocators.logo)
 
@@ -42,6 +47,7 @@ class MainPage(BasePage):
     def click_logo_yandex(self):
         self.click_on_element(BasePageLocators.logo_yandex)
 
+    @allure.step('Проверяем кликабельность логотипа "Yandex"')
     def check_logo_yandex_is_clickable(self):
         self.check_element_is_clickable(BasePageLocators.logo_yandex)
 
@@ -49,10 +55,10 @@ class MainPage(BasePage):
     def click_button_order_header(self):
         self.click_on_element(BasePageLocators.button_order_header)
 
-    @allure.step('Получаем текст открывшегося списка')
+    @allure.step('Открываем текстовое поле из списка')
     def click_to_target_in_list(self, locator_id):
         self.click_to_target_by_id(locator_id)
 
     @allure.step('Получаем текст открывшегося списка')
     def get_text_in_opened_list(self, locator_id):
-        self.get_text_in_target_by_id(locator_id)
+        return self.get_text_in_target_by_id(locator_id)

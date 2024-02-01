@@ -68,7 +68,6 @@ class TestOrder:
     @allure.title('Проверка возврата на главную страницу при тапе на лого самоката')
     @pytest.mark.parametrize('name,surname,address,phone', [*Data.order_data])
     def test_back_to_main_page(self, driver, name, surname, address, phone):
-        driver.get('https://qa-scooter.praktikum-services.ru/')
 
         main_page = MainPage(driver)
         main_page.check_button_order_in_header_is_clickable()

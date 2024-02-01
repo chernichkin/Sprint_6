@@ -5,8 +5,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from pages.order_page import OrderPage
-from pages.base_page import BasePage
 from data import Data
 from pages.main_page import MainPage
 
